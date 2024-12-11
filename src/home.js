@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
   const tools = [
-    { name: 'STEP XML Generation', description: 'Converts the supplier excel to STEP xml (OPIL)' , page:'/tool/STEPXML' }
+    { name: 'Supplier File Converter', description: 'Converts the supplier excel file to STEP XML (OPIL)' , page:'/tool/STEPXML' }
     // Add more tools as needed
     
     // Add more tools as needed
@@ -19,7 +19,7 @@ function HomePage() {
   return (
     <Container style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', minHeight: '100vh' }}>
       <p style={{ fontSize: '1.5em', textAlign: 'center', marginBottom: '2em', marginTop: '2em' }}>
-        STEP XML Generator for OPIL
+        Supplier File Converter
       </p>
       <Container style={{ padding: '1em' }}>
         <Row >
