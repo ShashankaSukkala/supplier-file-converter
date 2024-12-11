@@ -7,8 +7,8 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/tool/STEPXMl" element={<ToolPage1/>} />
-        <Route path="/tool/About/ExcelToXml" element={<AboutToolPage1/>} />
+        <Route path="/STEPXMLGenerator" element={<ToolPage1 />} />
+        <Route path="/tool/About/ExcelToXml" element={<AboutToolPage1 />} />
         <Route path="/" element={<HomePage />} />
       </Routes>
     </Router>

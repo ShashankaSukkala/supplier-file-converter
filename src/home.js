@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom';
 
 function HomePage() {
   const tools = [
-    { name: 'Supplier File Converter', description: 'Converts Supplier Excel Files to STEP-XML (OPIL)' , page:'/tool/STEPXML' }
+    { name: 'Supplier File Converter', description: 'Converts Supplier Excel Files to STEP-XML (OPIL)', page: '/STEPXMLGenerator' }
     // Add more tools as needed
-    
+
     // Add more tools as needed
   ];
 
@@ -24,9 +24,9 @@ function HomePage() {
       <Container style={{ padding: '1em' }}>
         <Row >
           {tools.map((tool, index) => (
-            <Col className="d-flex flex-column"  style={{ marginBottom: '2em' }} key={index}>
+            <Col className="d-flex flex-column" style={{ marginBottom: '2em' }} key={index}>
               <Card className="d-flex flex-column " style={{ maxWidth: '18rem', padding: '1em', boxShadow: '0 4px 8px 0 rgba(0, 0, 0, 0.2)', transition: '0.3s', borderRadius: '5px' }}>
-                
+
                 <Card.Body className="d-flex flex-column">
                   <Card.Title>{tool.name}</Card.Title>
                   <Card.Text>{tool.description}</Card.Text>
