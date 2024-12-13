@@ -7,10 +7,14 @@ phases:
       - npm install
   build:
     commands:
-      - echo "Building the React app..."
+      - echo "Build started on `date`"
       - npm run build
+  post_build:
+    commands:
+      - echo "Build completed on `date`"
+
 artifacts:
   files:
     - '**/*'
-  base-directory: build  # Treat the `build` folder as the root
+  base-directory: build
   discard-paths: no
