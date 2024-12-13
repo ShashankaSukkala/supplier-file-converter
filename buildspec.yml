@@ -9,6 +9,8 @@ phases:
     commands:
       - echo "Build started on `date`"
       - npm run build
+      - mkdir output
+      - cp -r build/* output/  # Copy the contents of the build folder to the output directory
   post_build:
     commands:
       - echo "Build completed on `date`"
@@ -16,5 +18,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: build
+  base-directory: output  # Use the "output" directory as the artifact source
   discard-paths: no
