@@ -11,7 +11,7 @@ export const multiplicationFactorOptions = [
     {value:3.4, label:3.4},
     {value:3.5, label:3.5}
 ];
-
+//
 
   export const suppliers = [
     { value: "Bestseller", label: "Bestseller" },
