@@ -12,5 +12,5 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: build
+  base-directory: build  # Treat the `build` folder as the root
   discard-paths: no
