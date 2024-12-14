@@ -7,10 +7,10 @@ phases:
       - npm install
   build:
     commands:
-      - echo "Build started on `date`"
+      - echo "Building the React app..."
       - npm run build
       - mkdir output
-      - cp -r build/* output/  # Copy the contents of the build folder to the output directory
+      - cp -r build/* output/
   post_build:
     commands:
       - echo "Build completed on `date`"
@@ -18,5 +18,6 @@ phases:
 artifacts:
   files:
     - '**/*'
-  base-directory: output  # Use the "output" directory as the artifact source
+  base-directory: output
   discard-paths: no
+#
