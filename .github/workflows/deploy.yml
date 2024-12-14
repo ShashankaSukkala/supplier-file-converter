@@ -3,7 +3,7 @@ name: Deploy React App to S3 and CloudFront
 on:
   push:
     branches:
-      - main  # Trigger the workflow on pushes to the main branch
+      - main  # Trigger workflow on pushes to the main branch
 
 jobs:
   deploy:
@@ -18,7 +18,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v3
       with:
-        node-version: 16 # Use the Node.js version compatible with your React app
+        node-version: 16  # Use the version compatible with your project
 
     # Step 3: Install dependencies and build the React app
     - name: Install dependencies and build
@@ -28,20 +28,21 @@ jobs:
 
     # Step 4: Deploy to S3
     - name: Deploy to S3
-      uses: jakejarvis/s3-sync-action@v0.6.0
+      uses: jakejarvis/s3-sync-action@v0.5.1
       with:
         args: --acl public-read --delete
       env:
-        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}  # Add this secret in GitHub
-        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # Add this secret in GitHub
-        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # Add this secret in GitHub
-        SOURCE_DIR: build/  # The React build directory
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        SOURCE_DIR: build/
 
     # Step 5: Invalidate CloudFront cache
     - name: Invalidate CloudFront cache
-      uses: awact/cloudfront-action@v1
+      uses: aws-actions/aws-cloudfront-invalidate-cache@v2
       with:
-        distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}  # Add this secret in GitHub
-        invalidation-path: "/*"
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}
+        paths: "/*"
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
