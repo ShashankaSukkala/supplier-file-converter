@@ -1,0 +1,47 @@
+name: Deploy React App to S3 and CloudFront
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the main branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Step 1: Check out the repository
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Step 2: Set up Node.js
+    - name: Set up Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: 16 # Use the Node.js version compatible with your React app
+
+    # Step 3: Install dependencies and build the React app
+    - name: Install dependencies and build
+      run: |
+        npm install
+        npm run build
+
+    # Step 4: Deploy to S3
+    - name: Deploy to S3
+      uses: jakejarvis/s3-sync-action@v0.6.0
+      with:
+        args: --acl public-read --delete
+      env:
+        AWS_S3_BUCKET: ${{ secrets.AWS_S3_BUCKET }}  # Add this secret in GitHub
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }} # Add this secret in GitHub
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }} # Add this secret in GitHub
+        SOURCE_DIR: build/  # The React build directory
+
+    # Step 5: Invalidate CloudFront cache
+    - name: Invalidate CloudFront cache
+      uses: awact/cloudfront-action@v1
+      with:
+        distribution-id: ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }}  # Add this secret in GitHub
+        invalidation-path: "/*"
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
