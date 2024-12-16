@@ -168,7 +168,7 @@ export const multiplicationFactorOptions = [
   export const lifestyles = ["Mens", "Womens","Kids","None"];
   export const lifestages = ["Adult", "Teen", "Kids", "Infant"];
   export const genders = ["Men", "Women", "Boys","Girls","Unisex"];
-  export const ST_users = ["PROKING", "ABELKAR","LOREEGI","PAAJOH","Shashanka.Sukkala","Rakesh.Kandugula","KLIMMAK","Piippi","Hutting","nikkjen"];
+  export const ST_users = ["PROKING", "ABELKAR","LOREEGI","PAAJJOH","EXTSABA","SUKKSHA","KANDRAK","KLIMMAK","PIIPPI","HUTTING","NIKKJEN"];
   
   export const ticketTypes = [
     {value: "330F", label: "330F"},
