@@ -76,6 +76,8 @@ export const multiplicationFactorOptions = [
     { value: 1, label: "Continuity" },
     { value: 5, label: "2025 SS" },
     { value: 6, label: "2025 AW" },
+    { value: 7, label: "2026 SS" },
+    { value: 8, label: "2026 AW" },
     { value: 500, label: "Seasonal" },
     { value: 800, label: "2024 SS" },
     { value: 801, label: "2024 AW" }
