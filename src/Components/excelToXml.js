@@ -24,6 +24,8 @@ function convert(arrayBuffer, supplier, brand, buyer, season, phase, cl, gender,
     data = XLSX.utils.sheet_to_json(workbook.Sheets["product info"], { header: 1 });
   }else if (supplierName === "VAGABOND_FINLAND_OY") {
     data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1, range: 2 });
+  }else if (supplierName === "testsupplier1") {
+    data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1, range: 1});
   }
   else {
     data = XLSX.utils.sheet_to_json(workbook.Sheets[sheetName], { header: 1 });
